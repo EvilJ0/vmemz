@@ -1,0 +1,16 @@
+<div class="userProfileContainer">
+  <div class="userBox">
+    <div class="userAvatar"  [ngStyle]="{'background-image':'url('+root.lgs.currentUser.avatar+')'}"></div>
+    <div class="userInfo">
+      <div class="userName">{{root.lgs.currentUser.name}}</div>
+      <div class="userGotLikes"></div>
+      <div class="userGiveLikes">{{root.lgs.currentUser.likes.length}}</div>
+    </div>
+  </div>
+  <div class="userPostBox">
+    <div class="userCreatedPosts"></div>
+    <div class="userLikedPosts"></div>
+    content
+  </div>
+
+</div>

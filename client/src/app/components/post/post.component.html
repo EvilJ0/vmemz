@@ -1,0 +1,52 @@
+<div class="postContainer">
+  <div class="postBox">
+
+    <div class="postDateTimeDelete">
+      <div class="dateDeleteContainer">
+        <div class="postDate">
+          created {{post.date}} at {{post.time}}
+        </div>
+        <ng-container *ngIf="root.lgs.currentUser._id==post.createdByUserId">
+          <div class="deletePostButton"
+               (click)="onPostDeleted(post._id)">
+            <img class="deleteIcon" src="../../../assets/svg/delete.svg" alt="" width="27px">
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+
+    <div class="postBoxUserAndContent">
+      <div class="postUserInfo">
+        <div class="postUserAvatar" *mobxAutorun>
+          <img class="avatar" src="{{root.fs.createdBy(post.createdByUserId).avatar}}" width="70px">
+
+        </div>
+
+        <div class="postUserName">
+          {{root.fs.createdBy(post.createdByUserId).name}}
+        </div>
+      </div>
+
+
+      <div class="postContent">
+        {{post.content}}
+      </div>
+
+    </div>
+    <div class="likeBox">
+      <div class="likePostButton" (click)="root.lks.like(post._id,root.lgs.currentUser)"
+      >
+        <img class="deleteIcon" src="../../../assets/svg/like.svg" alt="" width="27px">
+      </div>
+      <div class="likes" *ngFor="let like of post.likes">
+        <img class="likeAvatarIcon" src="{{this.root.us.getUserAvatar(like.userId)}}" alt="">
+        {{this.root.us.getUserName(like.userId)}}
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>

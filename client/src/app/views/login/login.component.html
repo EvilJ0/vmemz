@@ -1,0 +1,61 @@
+
+<div class="loginContainer">
+  <div class="logoBoxLogin">
+    <img class="logo" src="./assets/svg/memeLogo.svg" alt="" height="90%">
+    EMEZ
+  </div>
+  <div class="loginContent">
+    <form class="loginFormBox"
+          [formGroup]="loginForm"
+          (ngSubmit)="ls.login(loginForm.value)"
+    >
+      <ng-container *mobxAutorun>
+        <div class="form-validation login"
+             *ngIf="!!ls.loginEr">
+          {{ls.loginEr}}
+        </div>
+      </ng-container>
+      <div class="inputLoginBox">
+        <input id="name"
+               type="text"
+               placeholder="enter your name"
+               class="input"
+               formControlName="username"
+               [hidden]="ls.signedTest()">
+        <input id="password"
+               type="password"
+               placeholder="enter your password"
+               class="input"
+               formControlName="password"
+               [hidden]="ls.signedTest()"></div>
+      <div class="userSigned" [hidden]="!ls.currentUser" *ngIf="ls.signedTest()">
+        <div class="userName">{{ls.currentUser.name}}</div>
+        is signed
+      </div>
+      <div class="login buttons">
+        <div class="loginButtonContainer">
+          <button class="buttonLogin"
+                  [disabled]="ls.signedTest()"
+                  type="submit">login
+          </button>
+        </div>
+        <div class="loginButtonContainer">
+          <button class="buttonLogin"
+                  [disabled]="!ls.signedTest()"
+                  (click)="ls.unsigned()">Unsigned
+          </button>
+        </div>
+        <div class="loginButtonContainer">
+          <button class="buttonLogin"
+                  [disabled]="ls.signedTest() || loginForm.value.invalid"
+                  (click)="ls.root.us.createNewUser(loginForm.value)">create new user
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+
+</div>

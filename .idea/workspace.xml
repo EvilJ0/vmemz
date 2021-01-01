@@ -2,38 +2,57 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f03a0d2-b0b0-4302-8341-4e40a31dd5db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/e2e/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/auth.adapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/base-ajax.adapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/like.adapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/login.adapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/post.adapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/socket.adapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/user.adapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/navbar/navbar.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/navbar/navbar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/navbar/navbar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/post-box/post-box.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/post-box/post-box.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/post-box/post-box.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/post/post.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/post/post.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/components/post/post.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/mockData/mockData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/services/authGuard.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/feed.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/like.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/login.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/user.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/stores/root.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/feed/feed.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/feed/feed.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/feed/feed.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/layout/layout.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/layout/layout.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/layout/layout.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/login/login.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/login/login.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/user-profile/user-profile.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/user-profile/user-profile.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/views/user-profile/user-profile.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/Trollface.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/delete.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/like.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/memeLogo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +90,8 @@
       <option name="presentableId" value="Default" />
       <updated>1609494579587</updated>
       <workItem from="1609494580952" duration="952000" />
+      <workItem from="1609495780839" duration="307000" />
+      <workItem from="1609496140949" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="creating">
       <created>1609494999211</created>

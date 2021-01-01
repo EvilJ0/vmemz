@@ -1,0 +1,490 @@
+body, html, mem-layout {
+  margin: 0;
+  display: flex;
+  flex: 1;
+  padding: 0;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, #000a86 50%);
+  box-sizing: border-box;
+}
+
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* border: 1px dotted yellow; */
+  align-items: center;
+}
+
+mem-navbar {
+  display: flex;
+  /* flex: 2; */
+  font-size: 1em;
+  background: #292929;
+  width: 100%;
+  flex-direction: row;
+  height: 50px;
+}
+
+.app-content {
+  display: flex;
+  flex: 15;
+  font-size: 1em;
+  justify-content: center;
+  width: 100%;
+  /* background: #ffffff54; */
+  /* margin-top: 30px; */
+  /* border-radius: 20px 20px 0 0; */
+}
+
+.logoNavbar {
+  display: flex;
+  flex: 1;
+  color: WHITE;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2em;
+  justify-content: center;
+}
+
+.menuNavbar {
+  display: flex;
+  flex-direction: row;
+  flex: 4;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+button.navBarButton {
+  border-radius: 10px;
+  margin-right: 10px;
+  height: 75%;
+  cursor: pointer;
+  background: gray;
+}
+
+mem-post-box {
+  background: #292929;
+  display: flex;
+  flex-direction: column;
+  width: 44%;
+  height: 100px;
+  justify-content: space-evenly;
+  border-radius: 27px;
+  align-items: center;
+  margin: 35px;
+}
+
+app-post-box {
+}
+
+mem-feed {
+  display: flex;
+  flex-direction: column;
+  width: 59%;
+  align-items: center;
+  margin-top: 31px;
+  background: #9698988f;
+  border-radius: 20px 20px 0 0;
+  padding: 0px 0 0px 0px;
+  justify-content: space-evenly;
+}
+
+app-feed {
+}
+
+.postBoxInput {
+  display: flex;
+  width: 100%;
+  justify-content: inherit;
+}
+
+input.input {
+  height: 30px;
+  border-radius: 10px;
+  border: 0px;
+  text-align: center;
+  font-size: 1em;
+  width: 50%;
+}
+
+input.input:focus {
+  border: 0px;
+  outline: 0px;
+}
+
+
+button.postButtonInput {
+  border: 0px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.postBoxTitle {
+  color: #c1c1c1;
+}
+
+.postContainer {
+  background: grey;
+  /* width: 90%; */
+  border-radius: 30px;
+  /* margin: 0px; */
+}
+
+app-posts {
+}
+
+.postBox {
+  margin: 24px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
+  padding: 10px;
+}
+
+.postBoxUserAndContent {
+  display: flex;
+  margin: 20px 0px 20px 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.postUserInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
+
+.postContent {
+  display: flex;
+  flex: 5;
+  font-size: 1em;
+  padding: 10px;
+  text-align: justify;
+  /* background: #5d59592e; */
+  flex-direction: row;
+}
+
+.postDateTimeDelete {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 0.8em;
+  /* padding: 10px; */
+}
+
+.postContainerWrapper {
+  /* background: black; */
+  display: flex;
+  width: 90%;
+  border-radius: 30px;
+  /* margin: 0px; */
+  flex-direction: column;
+  overflow: auto;
+  /* box-sizing: border-box; */
+  height: 500px;
+}
+
+
+.postUserAvatar {
+  width: 100px;
+  height: 100px;
+  background: azure;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 9px 0;
+  display: flex;
+  border-radius: 50%;
+  /* flex: 1; */
+}
+
+.postBox {
+}
+
+.deletePostButton {
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  background: #6b6b6b;
+  border-radius: 30px 15px 15px 30px;
+  cursor: pointer;
+  height: 33px;
+}
+
+
+.dateDeleteContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  align-items: center;
+}
+
+.postUserName {
+  display: flex;
+}
+
+
+img.deleteIcon {
+  width: 27px;
+}
+
+.likeBox {
+  display: flex;
+  justify-content: center;
+}
+
+.likePostButton {
+  background: #6b6b6b;
+  width: 40px;
+  justify-content: center;
+  display: flex;
+  height: 40px;
+  border-radius: 23px;
+  cursor: pointer;
+}
+
+img.deleteIcon {
+}
+
+img.logo {
+  margin: 0px 2px 0 0;
+  height: 100%;
+}
+
+.logoBox {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  cursor: pointer;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  /* flex: 1; */
+  background: #8e8e8eab;
+  width: 60%;
+  height: 60%;
+  border-radius: 12px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+mem-login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.createNewUser {
+  width: 50%;
+  background: aqua;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContent {
+  width: 60%;
+  background: #232323;
+  height: 41%;
+  display: flex;
+  justify-content: inherit;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 16px;
+}
+
+
+.login.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 110%;
+  justify-content: inherit;
+  flex: 3;
+}
+
+.login.buttons {
+}
+
+.loginButtonContainer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginButtonContainer {
+}
+
+button.buttonLogin {
+  display: flex;
+  width: 90%;
+  height: 70%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button.buttonLogin {
+}
+
+.userSigned {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userSigned {
+}
+
+.userName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2.2em;
+  margin: 0 0 15px 0px;
+}
+
+.userName {
+}
+
+.logoBoxLogin {
+  display: flex;
+  font-size: 6.5em;
+  font-weight: bold;
+  color: white;
+  align-items: center;
+  /* background: coral; */
+  /* border-radius: 28px; */
+}
+
+.likes {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7em;
+  align-items: center;
+  background: aliceblue;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 16px;
+  width: 27px;
+  height: 27px;
+}
+
+img.likeAvatarIcon {
+  width: 15px;
+}
+
+mem-user-profile {
+  background: #c5c2c2;
+  display: flex;
+  margin: 40px;
+  flex-direction: column;
+  width: 80%;
+  border-radius: 40px;
+}
+
+.userProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background: aliceblue; */
+  flex: 1;
+  margin: 20px;
+}
+
+.userBox {
+  display: flex;
+  flex: 1;
+  /* background: aquamarine; */
+  border: 1px dotted;
+  width: 100%;
+  flex-direction: row;
+}
+
+.userPostBox {
+  display: flex;
+  flex: 2;
+  /* background: black; */
+  width: 100%;
+  border: 1px gold dotted;
+  flex-direction: column;
+}
+
+.userAvatar {
+  /* background: aliceblue; */
+  display: flex;
+  flex: 1;
+  background-size: auto;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  background: #3386ce;
+  flex: 2;
+}
+
+.userCreatedPosts {
+  display: flex;
+  flex: 1;
+  background: aqua;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.userLikedPosts {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background: beige;
+  overflow: auto;
+}
+
+
+loginFormContent {
+  background: aqua;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+
+.inputLoginBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 6;
+  align-items: center;
+  justify-content: space-around;
+}
+
+loginFormBox {
+  display: flex;
+  background: azure;
+}
+
+form.loginFormBox {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}

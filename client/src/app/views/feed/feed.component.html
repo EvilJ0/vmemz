@@ -1,0 +1,10 @@
+<ng-container >
+  <mem-post-box (newPost)="fs.post($event)"></mem-post-box>
+  <div class="postContainerWrapper" *mobxAutorun>
+    <mem-post
+      *ngFor="let post of fs.posts"
+      [post]="post"
+      (postDeleted)="fs.deletePost($event)"
+    ></mem-post>
+  </div>
+</ng-container>
