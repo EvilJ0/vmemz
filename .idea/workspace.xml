@@ -2,57 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f03a0d2-b0b0-4302-8341-4e40a31dd5db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/auth.adapter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/base-ajax.adapter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/like.adapter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/login.adapter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/post.adapter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/socket.adapter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/adapters/user.adapter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/navbar/navbar.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/navbar/navbar.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/navbar/navbar.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/post-box/post-box.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/post-box/post-box.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/post-box/post-box.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/post/post.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/post/post.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/components/post/post.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/mockData/mockData.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/services/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/services/authGuard.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/feed.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/like.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/login.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/stores/entities/user.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/stores/root.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/feed/feed.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/feed/feed.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/feed/feed.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/layout/layout.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/layout/layout.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/layout/layout.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/login/login.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/login/login.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/login/login.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/user-profile/user-profile.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/user-profile/user-profile.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/views/user-profile/user-profile.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/Trollface.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/delete.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/like.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/svg/memeLogo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/types/Entities/iLike.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/types/Entities/iPost.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/types/Entities/iUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +38,9 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/shared" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\obuchenie\vmemz\server\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -99,7 +53,7 @@
       <updated>1609494579587</updated>
       <workItem from="1609494580952" duration="952000" />
       <workItem from="1609495780839" duration="307000" />
-      <workItem from="1609496140949" duration="333000" />
+      <workItem from="1609496140949" duration="668000" />
     </task>
     <task id="LOCAL-00001" summary="creating">
       <created>1609494999211</created>
@@ -108,7 +62,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609494999211</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor complete">
+      <created>1609496528586</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609496528586</updated>
+    </task>
+    <task id="LOCAL-00003" summary="refactor complete">
+      <created>1609496673621</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1609496673621</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,12 +85,14 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="creating" />
-    <option name="LAST_COMMIT_MESSAGE" value="creating" />
+    <MESSAGE value="refactor complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor complete" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1609494998150">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="-1429" y="0" key="CommitChangelistDialog2" timestamp="1609496654016">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1429" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1609496654016" />
     <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1609494998150" />
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1609494969323">
       <screen x="0" y="0" width="1536" height="824" />
@@ -140,9 +110,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="614" y="292" key="Github.ShareDialog/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1609494723416" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609495026833">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1609496701260">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1609496701260" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1609496701260">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1609496701260" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1609496701260">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1609496701260" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1609496701260">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1609496701260" />
+    <state x="-1469" y="183" key="Vcs.Push.Dialog.v2" timestamp="1609496657984">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1469" y="183" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1609496657984" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1609495026833" />
   </component>
 </project>
