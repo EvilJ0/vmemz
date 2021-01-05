@@ -8,6 +8,7 @@ import {AuthService}         from "../../services/auth.service";
 import {AuthGuardService}    from "../../services/authGuard.service";
 import {Router}              from "@angular/router";
 import {autorun}             from "mobx";
+import {SocketAdapter}       from "../../adapters/socket.adapter";
 
 @Component({
   selector: 'mem-layout',
@@ -25,6 +26,7 @@ export class LayoutComponent implements OnInit {
     public lks:LikeStore,
     public authService: AuthService,
     public authGuardService: AuthGuardService,
+    public socketAdapter:SocketAdapter,
     private router:Router
 
   ) {
@@ -35,6 +37,7 @@ export class LayoutComponent implements OnInit {
       await this.lks.getLikes().then(r => r);
      await this.lgs.getCurrentUser().then(r => r);
 
+
     })();
   }
 
@@ -43,6 +46,9 @@ export class LayoutComponent implements OnInit {
       this.router.navigateByUrl('login')
           .then(r=>r);
     }
+    //
+    // this.root.socketAdapter.listen(`getPosts`).subscribe((data)=>{console.log(data)})
+
   }
 
 

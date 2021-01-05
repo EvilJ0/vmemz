@@ -15,10 +15,7 @@ export interface IAuthController extends IBaseController {
 
   validatePassword(userName: string, password: string): Promise<boolean>
 
-
-
   auth(): (req: Request, res: Response, next: any) => void;
-
 
   isLoggedIn(req, res, next): Response<any> | void;
 }

@@ -16,10 +16,13 @@ export class AuthGuardService implements CanActivate {
   }
 
   canActivate() {
+    console.log(`authevicate work`)
     if (this.root.authService.isAuthenticated()) {
+      console.log(`true`)
       return true;
     }
     this.route.navigate(['login']).then()
+    console.log(`false`)
     return false;
   }
 }

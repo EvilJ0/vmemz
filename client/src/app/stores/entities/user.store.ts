@@ -52,7 +52,11 @@ export class UserStore {
         avatar  : '../../../assets/svg/Trollface.svg',
         name    : user.username,
         likes   : [],
+        likesGet:[],
+        dislikes:[],
+        dislikesGet:[],
         posts   : [],
+        postsLiked: [],
         password: user.password
       };
       console.log(newUser);
@@ -67,15 +71,20 @@ export class UserStore {
           avatar  : '../../../assets/svg/Trollface.svg',
           name    : user.username,
           likes   : [],
+          likesGet: [],
+          dislikes:[],
+          dislikesGet:[],
           password: user.password,
-          posts   : []
+          posts   : [],
+          postsLiked: [],
         };
       console.log(newUser);
       await this
         .root
         .userAdapter
-        .createNewUser(newUser);
-      await this.root.userAdapter.getUsers();
+        .createNewUser(newUser).then(async () => {
+          await this.root.socketAdapter.request('getUsers')
+        });
 
     }
 

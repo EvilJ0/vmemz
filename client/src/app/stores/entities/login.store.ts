@@ -1,9 +1,9 @@
-import {Injectable, Input}  from '@angular/core';
-import {action, observable} from 'mobx-angular';
-import {RootStore}          from '../root.store';
-import {Router}             from '@angular/router';
-import {autorun}            from 'mobx';
-import {IUser}              from "../../../../../shared/types/Entities/iUser";
+import {Injectable, Input, Output} from '@angular/core';
+import {action, observable}        from 'mobx-angular';
+import {RootStore}                 from '../root.store';
+import {Router}                    from '@angular/router';
+import {autorun}                   from 'mobx';
+import {IUser}                     from "../../../../../shared/types/Entities/iUser";
 
 
 export interface ILoginData {
@@ -15,12 +15,16 @@ export interface ILoginData {
               providedIn: 'root'
             })
 export class LoginStore {
-  @observable public currentUser!: IUser;
+  @observable public currentUser: IUser;
   @observable loginEr: string = '';
   emptyUser: IUser = {
     avatar  : '',
     posts   : [],
+    postsLiked: [],
     likes   : [],
+    likesGet:[],
+    dislikes:[],
+    dislikesGet:[],
     password: '',
     name    : '',
     _id     : ''

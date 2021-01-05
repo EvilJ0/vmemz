@@ -33,7 +33,9 @@ mem-navbar {
   flex: 15;
   font-size: 1em;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  /* height: 100%; */
   /* background: #ffffff54; */
   /* margin-top: 30px; */
   /* border-radius: 20px 20px 0 0; */
@@ -74,7 +76,7 @@ mem-post-box {
   justify-content: space-evenly;
   border-radius: 27px;
   align-items: center;
-  margin: 35px;
+  /* margin: 35px; */
 }
 
 app-post-box {
@@ -85,11 +87,12 @@ mem-feed {
   flex-direction: column;
   width: 59%;
   align-items: center;
-  margin-top: 31px;
+  /* margin-top: 31px; */
   background: #9698988f;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 20px 20px;
   padding: 0px 0 0px 0px;
   justify-content: space-evenly;
+  height: 673px;
 }
 
 app-feed {
@@ -185,7 +188,7 @@ app-posts {
   flex-direction: column;
   overflow: auto;
   /* box-sizing: border-box; */
-  height: 500px;
+  height: 66%;
 }
 
 
@@ -231,9 +234,9 @@ img.deleteIcon {
   width: 27px;
 }
 
-.likeBox {
+.likeWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .likePostButton {
@@ -278,6 +281,7 @@ mem-login {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 700px;
 }
 
 
@@ -393,6 +397,7 @@ mem-user-profile {
   flex-direction: column;
   width: 80%;
   border-radius: 40px;
+  height: 80%;
 }
 
 .userProfileContainer {
@@ -417,21 +422,23 @@ mem-user-profile {
 .userPostBox {
   display: flex;
   flex: 2;
-  /* background: black; */
+  /* background: #bd9898; */
   width: 100%;
-  border: 1px gold dotted;
-  flex-direction: column;
+  /* border: 1px gold dotted; */
+  flex-direction: row;
+  height: 50%;
 }
 
 .userAvatar {
-  /* background: aliceblue; */
+  background: aliceblue;
   display: flex;
   flex: 1;
-  background-size: auto;
+  background-size: 53%;
   background-repeat: no-repeat;
   justify-content: center;
   align-items: center;
   background-position: center;
+  border-radius: 20px;
 }
 
 .userInfo {
@@ -444,7 +451,7 @@ mem-user-profile {
 .userCreatedPosts {
   display: flex;
   flex: 1;
-  background: aqua;
+  /* background: aqua; */
   flex-direction: column;
   overflow: auto;
 }
@@ -487,4 +494,124 @@ form.loginFormBox {
   flex-direction: column;
   flex: 1;
   align-items: center;
+}
+
+
+.counter {font-size: 2em;display: flex;justify-content: center;align-items: center;margin: 0px 0px 0px 7px;cursor: pointer;}
+
+
+.likeBox {
+    display: flex;
+    flex-direction: row;
+}
+
+div {}
+
+.likesAvatarBox {
+    background: #b7bfc7f5;
+    position: inherit;
+    border-radius: 10px;
+    margin-top: 0;
+    margin: -69px -126px 2px -140px;
+    width: 200px;
+    height: 100px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+textarea.inputArea {
+    resize: none;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.currentUser {
+    margin: 23px;
+    font-size: 1.5em;
+    color: grey;
+    cursor: default;
+}
+
+.userPostBox {}
+
+.userCreatedPostBox {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 10px 10px 10px 20px;
+    /* overflow: auto; */
+    height: 94%;
+}
+
+.userLikedPostBox {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 10px 20px 10px 10px;
+}
+
+.postDetails {
+    display: flex;
+    flex-direction: row;
+    /* background: azure; */
+    border-radius: 5px;
+    height: 38px;
+    width: 100%;
+    justify-content: center;
+}
+
+.indexOfPost {
+    background: grey;
+}
+
+.postDetailsContent {
+    display: flex;
+    background: #efefef;
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.postIndexDetails {
+    width: 10%;
+}
+
+.postContentDetails {
+    width: 50%;
+}
+
+.postTimeDetails {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.date {
+    display: flex;
+    flex: 1;
+}
+
+.time {
+    display: flex;
+    flex: 1;
+}
+
+.dateDetails {
+    display: flex;
+    flex: 1;
+    font-size: 0.7em;
+}
+
+.postCreated {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 0 10px 0px;
 }

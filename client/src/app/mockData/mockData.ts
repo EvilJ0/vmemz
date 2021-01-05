@@ -35,6 +35,7 @@ export const MOCK_POSTS:IPost[]                = [{
   date           : '21.04.2020',
   time           : '15:04',
   likes           : [MOCK_LIKES[1]],
+  disLikes:[],
   createdByUserName: 'John'
 
 },
@@ -51,6 +52,7 @@ export const MOCK_POSTS:IPost[]                = [{
     date           : '30.11.2020',
     time           : '17:64',
     likes           : [MOCK_LIKES[0]],
+    disLikes:[],
     createdByUserName: 'John'
 
   },
@@ -61,7 +63,11 @@ export const MOCK_USERS: IUser[] = [
     _id   : "1",
     name : 'John',
     posts: [MOCK_POSTS[0]],
+    postsLiked: [],
     likes: [MOCK_LIKES[1]],
+    likesGet:[],
+    dislikes:[],
+    dislikesGet:[],
     avatar: '../../../assets/svg/Trollface.svg',
     password:'123456'
   },
@@ -69,7 +75,11 @@ export const MOCK_USERS: IUser[] = [
     _id   : "2",
     name : 'Mike',
     posts: [MOCK_POSTS[1]],
+    postsLiked: [],
     likes: [MOCK_LIKES[0]],
+    likesGet:[],
+    dislikes:[],
+    dislikesGet:[],
     avatar: '../../../assets/svg/Trollface.svg',
     password:'123456'
   },

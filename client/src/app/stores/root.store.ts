@@ -22,7 +22,7 @@ export class RootStore {
   public fs: FeedStore;
   public us: UserStore;
   public lgs: LoginStore;
-
+  public socketAdapter: SocketAdapter
   useMock: boolean = false;
 
   constructor(
@@ -30,7 +30,7 @@ export class RootStore {
     public userAdapter: UserAdapter,
     public likeAdapter: LikeAdapter,
     public authAdapter: AuthAdapter,
-    public socketAdapter: SocketAdapter
+
   ) {
 
     window['root'] = this;

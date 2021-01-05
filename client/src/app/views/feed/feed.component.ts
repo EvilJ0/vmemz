@@ -3,6 +3,7 @@ import {Router}            from '@angular/router';
 import {RootStore}         from '../../stores/root.store';
 import {IPost}             from "../../../../../shared/types/Entities/iPost";
 import {FeedStore}         from "../../stores/entities/feed.store";
+import {autorun}           from "mobx";
 
 
 @Component({
@@ -17,13 +18,20 @@ export class FeedComponent implements OnInit {
     public fs: FeedStore,
     private router: Router,
     public root: RootStore) {
+
+    autorun (async ()=>{
+
+      await this.root.lgs.getCurrentUser().then(r => r);
+
+    })();
+
   }
 
   ngOnInit(): void {
-    if (!this.root.lgs.signedTest()) {
-      this.router.navigateByUrl('login')
-          .then(r => r);
-    }
+    // if (!this.root.lgs.signedTest()) {
+    //   this.router.navigateByUrl('login')
+    //       .then(r => r);
+    // }
 
     // this.root.postAdapter.getPosts2()
     //     .subscribe((posts2: IPost[]) => {
@@ -32,6 +40,7 @@ export class FeedComponent implements OnInit {
     //       }
     //     });
     this.root.us.getUsers()
+
 
   }
 

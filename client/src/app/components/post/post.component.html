@@ -1,4 +1,5 @@
-<div class="postContainer">
+<script src="../../stores/entities/feed.store.ts"></script>
+<div class="postContainer" *mobxAutorun>
   <div class="postBox">
 
     <div class="postDateTimeDelete">
@@ -34,15 +35,44 @@
       </div>
 
     </div>
-    <div class="likeBox">
-      <div class="likePostButton" (click)="root.lks.like(post._id,root.lgs.currentUser)"
-      >
-        <img class="deleteIcon" src="../../../assets/svg/like.svg" alt="" width="27px">
+    <div class="likeWrapper">
+      <div class="likeBox">
+        <div class="likePostButton" (click)="root.lks.generateLike(post._id,root.lgs.currentUser)">
+          <img class="deleteIcon" src="../../../assets/svg/like.svg" alt="" width="27px">
+        </div>
+        <div class="counter" (click)="viewModeLikes='add'" *mobxAutorun>{{post.likes.length}}</div>
+        <div [ngSwitch]="viewModeLikes" class="newDiv">
+          <div *ngSwitchCase="'add'"
+               (click)="viewModeLikes='empty'"
+               class="likesAvatarBox">
+            <div class="likes" *ngFor="let like of post.likes">
+              <img class="likeAvatarIcon" src="{{this.root.us.getUserAvatar(like.userId)}}" alt="">
+              {{this.root.us.getUserName(like.userId)}}
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="likes" *ngFor="let like of post.likes">
-        <img class="likeAvatarIcon" src="{{this.root.us.getUserAvatar(like.userId)}}" alt="">
-        {{this.root.us.getUserName(like.userId)}}
+
+
+      <div class="likeBox">
+        <div class="likePostButton" (click)="root.lks.generateUnLike(post._id,root.lgs.currentUser)">
+          <img class="deleteIcon" src="../../../assets/svg/unLike.svg" alt="" width="27px">
+        </div>
+        <div class="counter" (click)="viewModeDislikes='add'" *mobxAutorun>{{post.disLikes.length}}</div>
+        <div [ngSwitch]="viewModeDislikes" class="newDiv">
+          <div *ngSwitchCase="'add'"
+               (click)="viewModeDislikes='empty'"
+               class="likesAvatarBox">
+            <div class="likes" *ngFor="let disLike of post.disLikes">
+              <img class="likeAvatarIcon" src="{{this.root.us.getUserAvatar(disLike.userId)}}" alt="">
+              {{this.root.us.getUserName(disLike.userId)}}
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </div>
 
 

@@ -10,6 +10,8 @@ export class PostBoxComponent implements OnInit {
   emptyValue=''
 
   constructor() {
+
+
   }
 
   ngOnInit(): void {

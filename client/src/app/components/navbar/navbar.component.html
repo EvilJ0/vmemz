@@ -3,8 +3,13 @@
     <img class="logo" src="./assets/svg/memeLogo.svg" alt="" height="90%">
     EMEZ
   </div>
+
 </div>
+
 <div class="menuNavbar">
+  <div class="currentUser">
+    {{this.root.lgs.currentUser.name}} is logged in
+  </div>
   <button class="navBarButton" (click)="routeToLogin()">Login</button>
   <button class="navBarButton" (click)="routeToProfile()">Profile</button>
   <button class="navBarButton" (click)="routeToFeed()">Feed</button>

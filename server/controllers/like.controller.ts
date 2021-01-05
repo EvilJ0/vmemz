@@ -15,6 +15,7 @@ export interface ILikeController extends IBaseController {
   deletePostLikes(post_id: string): Promise<any>;
 
   unLike(like_id: string): Promise<any>;
+
 }
 
 export class LikeController extends BaseController implements ILikeController {

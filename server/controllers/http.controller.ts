@@ -23,6 +23,8 @@ import {Server as IOServer, Socket as SocketIO_Socket} from 'socket.io';
 import * as http                                       from 'http';
 import * as socketio                                   from 'socket.io';
 import {getUsersSocketHandler}                         from '../hendlers/user.handler';
+import {getPostsSocketHandler}                         from "../hendlers/post.handler";
+import {getLikesSocketHandler}                         from "../hendlers/like.handler";
 //</editor-fold>
 
 
@@ -133,25 +135,55 @@ export class HttpController extends BaseController implements IHttpController {
 
         this.io_server.on('connection', function (socket: SocketIO_Socket) {
             This.sockets.push(socket);
-            const idx = This.sockets.indexOf(socket)
-            socket.send('hello world')
-            console.log(`SOCKET CONNECTED to slot ${idx}. Total ${This.sockets.length} clients connected.  `);
+            // const idx = This.sockets.indexOf(socket)
+            This.sockets.map(socket=>{
+                if (socket.disconnected){
+                    console.log(`${socket.id} is disconnected`);
+                    This.sockets.splice(This.sockets.indexOf(socket),1)
+                }
+            })
+            // socket.send('hello world')
+            console.log(`SOCKET CONNECTED to slot ${socket.id}. Total ${This.sockets.length} clients connected.  `);
 
             console.log(socket.connected, 'socket.connected');
 
 
-            socket.on('disconnected', () => {
-                This.sockets.splice(idx, 1);
-                console.log(`SOCKET CLOSED in slot ${idx}. Total ${This.sockets.length} clients connected `)
+            socket.on('disconnect', (data) => {
+                // This.sockets.splice(idx, 1);
+                console.log(`SOCKET CLOSED in slot ${socket.id}. Total ${This.sockets.length} clients connected `)
+
+                This.sockets.map(socket=>{
+                    socket.emit('reconnect')
+                })
             })
 
             socket.on('getUsers', async () => {
-                console.log('getUsers');
+                console.log(`getUsers from ${socket.id}`);
                 const users = await getUsersSocketHandler.call(This.main)
-                socket.emit('getUsers', users)
+                This.sockets.map(socket=>{
+                    socket.emit('getUsers', users)
+                })
+
             })
-            socket.on('getPosts', () => {
-                console.log(' GET USERS !!!!');
+
+            socket.on('getPosts', async () => {
+                console.log(`getPosts from ${socket.id}`);
+                const posts = await getPostsSocketHandler.call(This.main)
+                This.sockets.map(socket=>{
+                    socket.emit('getPosts', posts)
+                })
+            })
+
+            socket.on('getLikes', async () => {
+                console.log(`getLikes from ${socket.id}`);
+                const likes = await getLikesSocketHandler.call(This.main)
+                This.sockets.map(socket=>{
+                    socket.emit('getLikes', likes)
+                })
+            })
+
+            socket.on(`ping`, () => {
+                console.log(`get ping from ${socket.id}`)
             })
         })
 
@@ -169,12 +201,12 @@ export class HttpController extends BaseController implements IHttpController {
         //region user http operations
         //get all users
         this.express_app.get('/api/users', (req, res) => {
-            console.log(`all users get`);
+            // console.log(`all users get`);
             this.events.emit('all_users', req, res);
         });
         // get specific user
         this.express_app.get('/api/users/:id', (req: Request, res: Response) => {
-            console.log(`http get user work`);
+            // console.log(`http get user work`);
             this.events.emit('get_user', req, res);
         });
         //create new user
@@ -187,7 +219,7 @@ export class HttpController extends BaseController implements IHttpController {
         //region post http operations
 
         //get all posts
-        this.express_app.get('/api/posts', this.main.authController.isLoggedIn,(req: Request, res: Response) => {
+        this.express_app.get('/api/posts', (req: Request, res: Response) => {
             this.events.emit('all_posts', req, res);
         });
         //get specific post
@@ -200,7 +232,7 @@ export class HttpController extends BaseController implements IHttpController {
         });
         //delete post
         this.express_app.delete('/api/posts/:id', (req: Request, res: Response) => {
-            console.log(`http delete post work`);
+            // console.log(`http delete post work`);
             this.events.emit('delete_post', req, res);
         });
         //endregion

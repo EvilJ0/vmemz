@@ -1,16 +1,33 @@
 <div class="userProfileContainer">
   <div class="userBox">
-    <div class="userAvatar"  [ngStyle]="{'background-image':'url('+root.lgs.currentUser.avatar+')'}"></div>
+    <div class="userAvatar" [ngStyle]="{'background-image':'url('+root.lgs.currentUser.avatar+')'}"></div>
     <div class="userInfo">
       <div class="userName">{{root.lgs.currentUser.name}}</div>
-      <div class="userGotLikes"></div>
-      <div class="userGiveLikes">{{root.lgs.currentUser.likes.length}}</div>
+      <div class="userGotLikes">user got likes: </div>
+      <div class="userGotDislikes">user got likes: </div>
+      <div class="userGiveLikes" *mobxAutorun>user done likes:</div>
+      <div class="userGiveDislikes" *mobxAutorun>user done likes:</div>
     </div>
   </div>
   <div class="userPostBox">
-    <div class="userCreatedPosts"></div>
-    <div class="userLikedPosts"></div>
-    content
+    <div class="userCreatedPostBox"><label class="postCreated">posts created by user</label>
+      <div class="userCreatedPosts" *mobxAutorun>
+
+        <div
+          *ngFor="let post of this.root.lgs.currentUser.posts;let i=index" [attr.data-index]="i" class="postDetails"
+        >
+          <div class="postDetailsContent postIndexDetails">{{i + 1}}</div>
+          <div class="postDetailsContent postContentDetails">{{post.content}}</div>
+          <div class="postDetailsContent postTimeDetails"><div class="dateDetails">{{post.date}}</div><div class="dateDetails">{{post.time}}</div></div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="userLikedPostBox">posts liked by user
+      <div class="userLikedPosts"></div>
+    </div>
+
   </div>
 
 </div>

@@ -1,10 +1,12 @@
 <div class="postBoxTitle">new post</div>
 <div class="postBoxInput">
-  <input
+  <textarea
     #postInput
     (keydown.enter)="postToFeed(postInput.value); postInput.value=emptyValue"
-    class="input" type="text" placeholder="write something..."
-    value="{{emptyValue}}">
+    class="inputArea" type="text" placeholder="write something..."
+    value="{{emptyValue}}"
+    rows="2"
+    cols="20"></textarea>
   <button class="postButtonInput"
           (click)="postToFeed(postInput.value); postInput.value=emptyValue"
 

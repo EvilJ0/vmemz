@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {RootStore}         from '../../stores/root.store';
-import {Router}            from '@angular/router';
-import {autorun}           from "mobx";
+import {Component, Input, OnInit} from '@angular/core';
+import {RootStore}                from '../../stores/root.store';
+import {Router}                    from '@angular/router';
+import {autorun, observable, toJS} from "mobx";
+import {js}                        from "../../../main";
 
 @Component({
              selector: 'mem-user-profile',
@@ -14,15 +15,16 @@ export class UserProfileComponent implements OnInit {
     public root: RootStore,
     private router: Router
   ) {
-    autorun(() => {
-      this.root.lgs.getCurrentUser().then(r => r);
-    });
+
   }
+
 
   ngOnInit(): void {
     if (!this.root.lgs.signedTest()) {
       this.router.navigateByUrl('login')
           .then(r => r);
     }
+
+
   }
 }

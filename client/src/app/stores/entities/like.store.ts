@@ -39,9 +39,37 @@ export class LikeStore {
   }
 
   @action
-  async like(postId: string | any, currentUser: IUser) {
+  async testPostLike(postId: string, userId: string) {
+    // console.log(`test work`)
+    const postIdLike = this.root.fs.posts
+                           .findIndex(post => post._id === postId);
+    // console.log(postIdLike)
+    if ((this.root.fs.posts[postIdLike]).createdByUserId === userId) {
+      console.log(`User ${userId} cant like post ${this.root.fs.posts[postIdLike]._id}`);
+      return true;
+    } else {
+      const like    = this.root.fs.posts[postIdLike].likes.find(like => like.userId === userId),
+            disLike = this.root.fs.posts[postIdLike].disLikes.find(disLike => disLike.userId === userId)
+      if (like) {
+        console.log(`User ${userId} already liked post ${postId}`);
+        await this.root.lks.unlike(like._id);
+        return true;
+      }
+      if (disLike) {
+        console.log(`User ${userId} already liked post ${postId}`);
+        await this.root.lks.unlike(disLike._id);
+        return true;
+      }
+
+    }
+    return false;
+  }
+
+
+  @action
+  async like(postId: string, currentUser: IUser, newLike: ILike) {
     if (this.root.useMock) {
-      if (!this.root.fs.testPostLike(postId, currentUser._id)) {
+      if (!await this.testPostLike(postId, currentUser._id)) {
         this.likes.unshift({
                              _id      : 'new',
                              postId   : postId,
@@ -58,28 +86,50 @@ export class LikeStore {
         this.addLike(this.likes[newLike], userIdLikeUpdate, this.root.us.users[postIdLikeUpdate].likes);
       }
     } else {
-      if (!this.root.fs.testPostLike(postId, currentUser._id)) {
-        const newLike: ILike = {
-          postId   : postId,
-          timeStamp: dayjs().format('DD.MM.YY'),
-          type     : true,
-          userId   : currentUser._id,
-          userName : currentUser.name
-        };
-        await this.root.likeAdapter.createLike(newLike);
-        this.likes = await this.getLikes();
+      if (!await this.testPostLike(postId, currentUser._id)) {
+        await this.root.likeAdapter.createLike(newLike).then(async () => {
+          await this.root.socketAdapter.request('getLikes');
+          await this.root.socketAdapter.request('getPosts');
+        })
+
         await this.root.fs.getPosts();
       }
-
-
     }
-
-
   }
 
+  async unlike(like_id: string) {
+    console.log(`deleting like ${like_id}`)
+    await this.root.likeAdapter.unLike(like_id).then(async () => {
+      await this.root.socketAdapter.request('getLikes');
+      await this.root.socketAdapter.request('getPosts');
+    })
+  }
 
   addLike(like: ILike, idUpdate: number, model: any) {
     model.unshift(like);
     console.log(this.root.fs.posts[idUpdate]);
+  }
+
+  async generateLike(postId: string, currentUser: IUser) {
+    const newLike: ILike = {
+      postId   : postId,
+      timeStamp: dayjs().format('DD.MM.YY'),
+      type     : true,
+      userId   : currentUser._id,
+      userName : currentUser.name
+    };
+
+    await this.like(postId, currentUser, newLike);
+  }
+
+  async generateUnLike(postId: string, currentUser: IUser) {
+    const newLike: ILike = {
+      postId   : postId,
+      timeStamp: dayjs().format('DD.MM.YY'),
+      type     : false,
+      userId   : currentUser._id,
+      userName : currentUser.name
+    };
+    await this.like(postId, currentUser, newLike);
   }
 }
