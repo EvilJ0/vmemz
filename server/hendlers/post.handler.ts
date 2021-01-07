@@ -8,27 +8,8 @@ import {ILike}             from "../../shared/types/Entities/iLike";
 export const getPostsHandler = async function (this: IMainController, req: Request, res: Response) {
     try {
         const
-            posts            = await this.postController.getPosts(),
-            postRes: IPost[] =
-                await Promise.all(
-                    posts.map(async (post: IPost | any) => {
-                        await this.likeController.getPostLikes(post._id.toString()).then(response => {
-                            for (let like of response) {
-                                // console.log(like.type)
-                                if (like.type) {
-                                    post.likes.push(like)
-                                } else {
-                                    post.disLikes.push(like)
-                                }
-                            }
-                        });
-                        return post;
-                    })
-                );
-
-        return res.send(postRes);
-
-
+            posts = await this.postController.getPosts()
+        return res.send(posts);
     } catch (e) {
         return res.status(404).json({msg: `posts not found ${e}`});
     }
@@ -76,16 +57,6 @@ export async function deletePostHandler(this: IMainController, req: Request, res
 export async function getPostHandler(this: IMainController, req: Request, res: Response) {
     try {
         const post = await this.postController.getPost(req.params.id);
-        await this.likeController.getPostLikes(post._id.toString()).then(response => {
-            for (let like of response) {
-                // console.log(like.type)
-                if (like.type) {
-                    post.likes.push(like)
-                } else {
-                    post.disLikes.push(like)
-                }
-            }
-        });
         return res.json(post);
     } catch (e) {
         return res.status(404).json({msg: 'no user not found' + e});
@@ -94,25 +65,7 @@ export async function getPostHandler(this: IMainController, req: Request, res: R
 
 export async function getPostsSocketHandler(this: IMainController) {
     try {
-        const posts            = await this.postController.getPosts(),
-              postRes: IPost[] =
-                  await Promise.all(
-                      posts.map(async (post: IPost | any) => {
-
-                          await this.likeController.getPostLikes(post._id.toString()).then(response => {
-                              for (let like of response) {
-                                  // console.log(like.type)
-                                  if (like.type) {
-                                      post.likes.push(like)
-                                  } else {
-                                      post.disLikes.push(like)
-                                  }
-                              }
-                          });
-                          return post;
-                      })
-                  );
-
+        const posts = await this.postController.getPosts();
         return posts
     } catch (e) {
         return `no posts`

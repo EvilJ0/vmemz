@@ -4,6 +4,7 @@
     <mem-post
       *ngFor="let post of fs.posts"
       [post]="post"
+      [currentUser]="root.lgs.currentUser"
       (postDeleted)="fs.deletePost($event)"
     ></mem-post>
   </div>

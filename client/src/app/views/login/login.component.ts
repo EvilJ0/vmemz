@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
     public  ls:LoginStore
 
   ) {
-    autorun(() => {
-      this.ls.getCurrentUser().then(r => r);
-    });
+    // autorun(() => {
+    //   this.ls.getCurrentUser().then(r => r);
+    // });
   }
 
   ngOnInit(): void {

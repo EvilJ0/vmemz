@@ -12,6 +12,7 @@ import {PostComponent}        from './components/post/post.component';
 import {MobxAngularModule}    from "mobx-angular";
 import {HttpClientModule}     from "@angular/common/http";
 import {ReactiveFormsModule}  from "@angular/forms";
+import { PostListComponent } from './components/post-list/post-list.component';
 
 @NgModule({
             declarations: [
@@ -23,6 +24,7 @@ import {ReactiveFormsModule}  from "@angular/forms";
               PostBoxComponent,
               PostComponent,
               LoginComponent,
+              PostListComponent,
 
             ],
             imports     : [

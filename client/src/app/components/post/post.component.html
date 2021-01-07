@@ -1,4 +1,4 @@
-<script src="../../stores/entities/feed.store.ts"></script>
+
 <div class="postContainer" *mobxAutorun>
   <div class="postBox">
 
@@ -7,8 +7,8 @@
         <div class="postDate">
           created {{post.date}} at {{post.time}}
         </div>
-        <ng-container *ngIf="root.lgs.currentUser._id==post.createdByUserId">
-          <div class="deletePostButton"
+        <ng-container *ngIf="currentUser._id==post.createdByUserId">
+          <div class="deletePostButton button"
                (click)="onPostDeleted(post._id)">
             <img class="deleteIcon" src="../../../assets/svg/delete.svg" alt="" width="27px">
           </div>
@@ -37,7 +37,7 @@
     </div>
     <div class="likeWrapper">
       <div class="likeBox">
-        <div class="likePostButton" (click)="root.lks.generateLike(post._id,root.lgs.currentUser)">
+        <div class="likePostButton button" (click)="root.lks.generateLike(post._id,currentUser)">
           <img class="deleteIcon" src="../../../assets/svg/like.svg" alt="" width="27px">
         </div>
         <div class="counter" (click)="viewModeLikes='add'" *mobxAutorun>{{post.likes.length}}</div>
@@ -56,8 +56,8 @@
 
 
       <div class="likeBox">
-        <div class="likePostButton" (click)="root.lks.generateUnLike(post._id,root.lgs.currentUser)">
-          <img class="deleteIcon" src="../../../assets/svg/unLike.svg" alt="" width="27px">
+        <div class="likePostButton button" (click)="root.lks.generateUnLike(post._id,currentUser)">
+          <img class="deleteIcon " src="../../../assets/svg/unLike.svg" alt="" width="27px">
         </div>
         <div class="counter" (click)="viewModeDislikes='add'" *mobxAutorun>{{post.disLikes.length}}</div>
         <div [ngSwitch]="viewModeDislikes" class="newDiv">

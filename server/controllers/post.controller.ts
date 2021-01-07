@@ -15,6 +15,8 @@ export interface IPostController extends IBaseController {
   getUserPosts(user_Id: string): Promise<IPost[]>
 
   deletePost(post_id: string): Promise<any>;
+
+  getUserLikedPosts(user_id: string): Promise<IPost[]>;
 }
 
 export class PostController extends BaseController implements IPostController {
@@ -43,6 +45,10 @@ export class PostController extends BaseController implements IPostController {
   async deletePost(post_id: string): Promise<any> {
     // console.log(`deleting post ${post_id}`)
     return this.main.mongoController.deletePost(post_id);
+  }
+
+  async getUserLikedPosts(user_id: string): Promise<IPost[]> {
+    return await this.main.mongoController.getUserLikedPosts(user_id)
   }
 
 }

@@ -2,8 +2,6 @@ import {IMainController}   from '../controllers/main.controller';
 import {Request, Response} from 'express';
 import {ILike}             from '../../Shared/types/Entities/iLike';
 import * as dayjs          from 'dayjs';
-import {IUser}             from '../../Shared/types/Entities/iUser';
-import {IPost}             from '../../Shared/types/Entities/iPost';
 
 
 export const getLikesHandler = async function (this: IMainController, req: Request, res: Response) {

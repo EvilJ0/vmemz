@@ -92,7 +92,7 @@ export class LikeStore {
           await this.root.socketAdapter.request('getPosts');
         })
 
-        await this.root.fs.getPosts();
+        // await this.root.fs.getPosts();
       }
     }
   }

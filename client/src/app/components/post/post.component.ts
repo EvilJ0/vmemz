@@ -22,15 +22,16 @@ export class PostComponent implements OnInit {
 
   }
 
-  async getPostLikes(post:IPost){
-
-    // for (let like of post.likes){
-    //   await this.likes.push(like)
-    //   return
-    // }
-  }
+  // async getPostLikes(post:IPost){
+  //
+  //   // for (let like of post.likes){
+  //   //   await this.likes.push(like)
+  //   //   return
+  //   // }
+  // }
   ngOnInit(): void {
-     this.getPostLikes(this.post)
+
+    // console.log(this.currentUser)
   }
 
   onPostDeleted(val: any) {

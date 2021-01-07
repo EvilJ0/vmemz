@@ -1,3 +1,26 @@
+@keyframes example {
+  0%   {left:-100%; top:0px;}
+  100% {left:0%; top:0px;}
+}
+@keyframes example2{
+  0%   {left:0%; top:-100%;}
+  100% {left:0%; top:0%;}
+}
+@keyframes example3{
+  0%   {left:0%; top:0%;}
+  50%  {left:0%; top:1%;}
+  100% {left:0%; top:0%;}
+}
+@keyframes example4{
+  0%   {left:0%; top:0%;}
+  50%  {left:0%; top:1%;}
+  100% {left:0%; top:0%;}
+}
+@keyframes example5{
+  0%  {transform: scale(0)}
+  100% {transform: scale(1)}
+}
+
 body, html, mem-layout {
   margin: 0;
   display: flex;
@@ -5,8 +28,9 @@ body, html, mem-layout {
   padding: 0;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(black, #000a86 50%);
+  background: linear-gradient(black, #010b7c 50%);
   box-sizing: border-box;
+  box-shadow: inset;
 }
 
 
@@ -26,6 +50,10 @@ mem-navbar {
   width: 100%;
   flex-direction: row;
   height: 50px;
+  position: relative;
+  animation-name: example2;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .app-content {
@@ -35,6 +63,7 @@ mem-navbar {
   justify-content: center;
   align-items: center;
   width: 100%;
+  /* box-shadow: 13px -2px 4px -2px black; */
   /* height: 100%; */
   /* background: #ffffff54; */
   /* margin-top: 30px; */
@@ -57,6 +86,10 @@ mem-navbar {
   flex: 4;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
+  /* animation-name: example; */
+  /* animation-duration: 1s; */
+  /* animation-fill-mode: forwards; */
 }
 
 button.navBarButton {
@@ -71,12 +104,13 @@ mem-post-box {
   background: #292929;
   display: flex;
   flex-direction: column;
-  width: 44%;
+  width: 67%;
   height: 100px;
   justify-content: space-evenly;
   border-radius: 27px;
   align-items: center;
   /* margin: 35px; */
+  box-shadow: 0px 6px 9px 0px #0202027d, inset 0px 0px 106px 0px #535252;
 }
 
 app-post-box {
@@ -93,6 +127,11 @@ mem-feed {
   padding: 0px 0 0px 0px;
   justify-content: space-evenly;
   height: 673px;
+  box-shadow: 0px 10px 31px 0px black, inset 0px 0px 106px 0px #535252;
+  position: relative;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 app-feed {
@@ -131,9 +170,14 @@ button.postButtonInput {
 
 .postContainer {
   background: grey;
-  /* width: 90%; */
+  width: 95%;
   border-radius: 30px;
   /* margin: 0px; */
+  box-shadow: 0px 4px 12px 0px black, inset 0px 0px 106px 0px #535252;
+  position: relative;
+  animation-name: example4;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 app-posts {
@@ -189,6 +233,8 @@ app-posts {
   overflow: auto;
   /* box-sizing: border-box; */
   height: 66%;
+  /* align-items: center; */
+  /* width: 100%; */
 }
 
 
@@ -259,7 +305,7 @@ img.logo {
 
 .logoBox {
   display: flex;
-  height: 100%;
+  height: 80%;
   align-items: center;
   cursor: pointer;
 }
@@ -274,6 +320,11 @@ img.logo {
   border-radius: 12px;
   justify-content: space-evenly;
   align-items: center;
+  box-shadow: 0px 10px 31px 0px black, inset 0px 0px 106px 0px #535252;
+  position: relative;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 mem-login {
@@ -309,7 +360,7 @@ mem-login {
 .login.buttons {
   display: flex;
   flex-direction: row;
-  width: 110%;
+  width: 131%;
   justify-content: inherit;
   flex: 3;
 }
@@ -330,7 +381,7 @@ mem-login {
 button.buttonLogin {
   display: flex;
   width: 90%;
-  height: 70%;
+  height: 73%;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -398,6 +449,11 @@ mem-user-profile {
   width: 80%;
   border-radius: 40px;
   height: 80%;
+  box-shadow: 0px 10px 31px 0px black, inset 0px 0px 106px 0px #535252;
+  position: relative;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .userProfileContainer {
@@ -408,20 +464,21 @@ mem-user-profile {
   /* background: aliceblue; */
   flex: 1;
   margin: 20px;
+  /* box-shadow: 0px 10px 31px 0px black; */
 }
 
 .userBox {
   display: flex;
-  flex: 1;
+  flex: 2;
   /* background: aquamarine; */
-  border: 1px dotted;
+  /* border: 1px dotted; */
   width: 100%;
   flex-direction: row;
 }
 
-.userPostBox {
+.userprofilePostBox {
   display: flex;
-  flex: 2;
+  flex: 3;
   /* background: #bd9898; */
   width: 100%;
   /* border: 1px gold dotted; */
@@ -429,22 +486,24 @@ mem-user-profile {
   height: 50%;
 }
 
-.userAvatar {
-  background: aliceblue;
+.userAvatarBox {
+  /* background: aliceblue; */
   display: flex;
   flex: 1;
-  background-size: 53%;
-  background-repeat: no-repeat;
+  /* background-size: 53%; */
+  /* background-repeat: no-repeat; */
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   background-position: center;
   border-radius: 20px;
+  /* height: 70%; */
+  /* width: 27%; */
 }
 
 .userInfo {
   display: flex;
   flex-direction: column;
-  background: #3386ce;
+  /* background: #3386ce; */
   flex: 2;
 }
 
@@ -509,7 +568,7 @@ div {}
 
 .likesAvatarBox {
     background: #b7bfc7f5;
-    position: inherit;
+    position: relative;
     border-radius: 10px;
     margin-top: 0;
     margin: -69px -126px 2px -140px;
@@ -522,6 +581,9 @@ div {}
     align-items: center;
     flex-wrap: wrap;
     overflow: auto;
+    animation-name: example5;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
 }
 
 textarea.inputArea {
@@ -537,15 +599,15 @@ textarea.inputArea {
     cursor: default;
 }
 
-.userPostBox {}
+.userprofilePostBox {}
 
-.userCreatedPostBox {
+.userPostBox {
     display: flex;
     flex-direction: column;
     flex: 1;
     margin: 10px 10px 10px 20px;
     /* overflow: auto; */
-    height: 94%;
+    height: 300px;
 }
 
 .userLikedPostBox {
@@ -563,6 +625,12 @@ textarea.inputArea {
     height: 38px;
     width: 100%;
     justify-content: center;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+    position: relative;
+    animation-name: example2;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 
 .indexOfPost {
@@ -576,6 +644,7 @@ textarea.inputArea {
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    box-shadow: 3px 4px 9px -5px black;
 }
 
 .postIndexDetails {
@@ -614,4 +683,163 @@ textarea.inputArea {
     justify-content: center;
     font-weight: bold;
     margin: 0 0 10px 0px;
+}
+
+
+.userCreatedPosts::-webkit-scrollbar {
+    display: none;
+}
+
+.postContainerWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+mem-post {
+    /* box-shadow: 18px 4px 16px 9px black; */
+    display: flex;
+    /* flex: 1; */
+    margin: 20px;
+    justify-content: center;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 7px 0px black;
+}
+
+.button {
+    transition: all 0.1s ease-out;
+    border-style: none;
+}
+
+.button:focus {outline: none;background: #fefefebf;}
+
+.button:active {
+    border-style: none;
+    transform: scale(1.0);
+    box-shadow: 0px 0px 0px 0px black;
+}
+
+.postDetails:hover {
+    transform: scale(1.1);
+}
+
+.partLikeBox {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.likeBoxCounter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: aliceblue;
+    height: 60px;
+    width: 144px;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 5px 6px 0px #0000002e, inset 0px 0px 19px 0px #5352527a;
+}
+
+.likeCounter {
+    font-size: 2em;
+    font-weight: bold;
+    position: relative;
+    animation-name: example5;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    color: #464646;
+}
+
+
+.userAvatar {
+    background: aliceblue;
+    display: flex;
+    /* flex: 1; */
+    background-size: 53%;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    border-radius: 20px;
+    height: 150px;
+    width: 150px;
+}
+
+.input {
+    transition: all 0.2s ease-out;
+    border-style: none;
+}
+
+.input:focus {
+    outline: none;
+    /* background: #fefefebf; */
+    box-shadow: 0px 0px 16px 0px black;
+}
+
+.input:active {
+    border-style: none;
+    transform: scale(1.0);
+    box-shadow: 0px 0px 0px 0px black;
+}
+
+
+.logo {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+img.logoFace {
+    position: relative;
+    height: 12%;
+    margin: 35px 0px 0px 19px;
+    animation-name: example3;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+
+img.logoHand {
+    position: relative;
+    height: 9%;
+    margin: 25px 0 0px 37px;
+    animation-name: example3;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+textarea.inputArea.input {}
+
+.logoBoxNavbar {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    align-items: center;
+}
+
+
+.newDiv {
+    animation-name: example4;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    position: relative;
+}
+
+
+.postUserPreview {
+    position: absolute;
+    /* background: aqua; */
+    width: 600px;
+    height: 200px;
+    margin: -290px 0 0 -281px;
+    /* display: flex; */
+    /* justify-content: center; */
 }

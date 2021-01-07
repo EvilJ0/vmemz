@@ -3,11 +3,11 @@
   <textarea
     #postInput
     (keydown.enter)="postToFeed(postInput.value); postInput.value=emptyValue"
-    class="inputArea" type="text" placeholder="write something..."
+    class="inputArea input" type="text" placeholder="write something..."
     value="{{emptyValue}}"
     rows="2"
     cols="20"></textarea>
-  <button class="postButtonInput"
+  <button class="postButtonInput button"
           (click)="postToFeed(postInput.value); postInput.value=emptyValue"
 
   >

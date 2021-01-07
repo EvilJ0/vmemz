@@ -45,7 +45,9 @@ export interface IDBController extends IBaseController {
     getUserByName(userName: string): Promise<IUser | any>;
 
 
-    // getUserLikedPosts(user_id: string): Promise<IPost[]>;
+    getUserLikedPosts(user_id: string): Promise<IPost[]>;
+
+
 }
 
 export class MongoController extends BaseController implements IDBController {
@@ -87,15 +89,72 @@ export class MongoController extends BaseController implements IDBController {
     }
 
     async getUsers(): Promise<IUser[]> {
-        return this.usersCollection.find().toArray();
+
+        const users             = await this.usersCollection.find().toArray(),
+              usersRes: IUser[] =
+                  await Promise.all(
+                      users.map(async (user: IUser | any) => {
+                          for (let like of await this.getUserLikes(user._id.toString())) {
+                              if (like.type) {
+                                  user.likes.push(like)
+                              } else {
+
+                                  user.dislikes.push(like)
+
+                              }
+                          }
+                          user.posts = await this.getUserPosts(user._id.toString());
+                          for (let post of user.posts) {
+                              await this.getPostLikes(post._id.toString()).then(response => {
+                                  for (let like of response) {
+                                      if (like.type) {
+                                          post.likes.push(like)
+                                          user.likesGet.push(like)
+                                      } else {
+                                          post.disLikes.push(like)
+                                          user.dislikesGet.push(like)
+                                      }
+                                  }
+                              });
+                          }
+                          user.postsLiked = await this.getUserLikedPosts(user._id.toString())
+                          return user;
+                      })
+                  );
+        return users
     }
 
     async getUser(user_id: string): Promise<IUser | any> {
-        const
-            userId = ObjectID(user_id);
-        console.log(`mongo get user work`);
-        // console.log(userId);
-        return this.usersCollection.findOne({_id: userId});
+        let user = this.usersCollection.findOne({_id: ObjectID(user_id)}).then(
+            async userRes => {
+                for (let like of await this.getUserLikes(userRes._id.toString())) {
+                    if (like.type) {
+                        userRes.likes.push(like)
+                    } else {
+                        userRes.dislikes.push(like)
+                    }
+                }
+
+                userRes.posts = await this.getUserPosts(userRes._id.toString());
+                for (let post of userRes.posts) {
+                    await this.getPostLikes(post._id.toString()).then(response => {
+                        for (let like of response) {
+                            if (like.type) {
+                                post.likes.push(like)
+                                userRes.likesGet.push(like)
+                            } else {
+                                post.disLikes.push(like)
+                                userRes.dislikesGet.push(like)
+                            }
+
+                        }
+                    });
+                }
+                userRes.postsLiked = await this.getUserLikedPosts(userRes._id.toString())
+                return userRes;
+            }
+        )
+        return user
 
     }
 
@@ -136,32 +195,57 @@ export class MongoController extends BaseController implements IDBController {
         return this.postsCollection.find({createdByUserId: user_id}).toArray();
     }
 
-    // async getUserLikedPosts(user_id: string): Promise<IPost[]> {
-    //     const allLikes = await this.getLikes()
-    //     const posts = await allLikes.map(async like => {
-    //         if (like.userId == user_id) {
-    //              await this.getPost(like.postId).then(post=>{
-    //                  posts.push(post)
-    //                  console.log(posts)
-    //              })
-    //         }
-    //         return posts
-    //     })
-    //
-    //     return posts
-    // }
+    async getUserLikedPosts(user_id: string): Promise<IPost[]> {
+        let userLikes        = await this.getUserLikes(user_id),
+            postRes: IPost[] = await Promise.all(
+                userLikes.map(async (like) => {
+                    return await this.getPost(like.postId)
+                })
+            )
+        return postRes
+    }
+
 
 
     async getPosts(): Promise<IPost[]> {
-        return this.postsCollection.find().toArray();
+        const
+            posts            = await this.postsCollection.find().toArray(),
+            postRes: IPost[] =
+                await Promise.all(
+                    posts.map(async (post: IPost | any) => {
+                        await this.getPostLikes(post._id.toString()).then(response => {
+                            for (let like of response) {
+                                // console.log(like.type)
+                                if (like.type) {
+                                    post.likes.push(like)
+                                } else {
+                                    post.disLikes.push(like)
+                                }
+                            }
+                        });
+                        return post;
+                    })
+                );
+
+        return posts
     }
 
     async getPost(post_id: string): Promise<IPost | any> {
-        const
-            postId = new ObjectID(post_id);
-        // console.log(`mongo get user work`);
-        // console.log(post_id);
-        return this.postsCollection.findOne({_id: postId});
+        const post = this.postsCollection.findOne({_id: new ObjectID(post_id)}).then(async (post: IPost) => {
+            await this.getPostLikes(post._id.toString()).then(response => {
+                for (let like of response) {
+                    // console.log(like.type)
+                    if (like.type) {
+                        post.likes.push(like)
+                    } else {
+                        post.disLikes.push(like)
+                    }
+                }
+            });
+            return post
+        })
+
+        return post
 
     }
 

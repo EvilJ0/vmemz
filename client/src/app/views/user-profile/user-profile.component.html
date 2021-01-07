@@ -1,33 +1,155 @@
 <div class="userProfileContainer">
   <div class="userBox">
-    <div class="userAvatar" [ngStyle]="{'background-image':'url('+root.lgs.currentUser.avatar+')'}"></div>
+    <div class="userAvatarBox">
+      <div class="userAvatar" [ngStyle]="{'background-image':'url('+root.lgs.currentUser.avatar+')'}"></div>
+    </div>
     <div class="userInfo">
       <div class="userName">{{root.lgs.currentUser.name}}</div>
-      <div class="userGotLikes">user got likes: </div>
-      <div class="userGotDislikes">user got likes: </div>
-      <div class="userGiveLikes" *mobxAutorun>user done likes:</div>
-      <div class="userGiveDislikes" *mobxAutorun>user done likes:</div>
+      <div class="partLikeBox">
+        <div class="userGotLikes likeBoxCounter" *mobxAutorun>got likes:
+          <div class="likeCounter">{{root.lgs.currentUser.likesGet.length}}</div>
+        </div>
+        <div class="userGotDislikes likeBoxCounter" *mobxAutorun>got dislikes:
+          <div class="likeCounter">{{root.lgs.currentUser.dislikesGet.length}} </div>
+        </div>
+      </div>
+      <div class="partLikeBox">
+        <div class="userGiveLikes likeBoxCounter" *mobxAutorun>done likes:
+          <div class="likeCounter">{{root.lgs.currentUser.likes.length}}</div>
+        </div>
+        <div class="userGiveDislikes likeBoxCounter" *mobxAutorun>done dislikes:
+          <div class="likeCounter">{{root.lgs.currentUser.dislikes.length}}</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="userPostBox">
-    <div class="userCreatedPostBox"><label class="postCreated">posts created by user</label>
-      <div class="userCreatedPosts" *mobxAutorun>
 
-        <div
-          *ngFor="let post of this.root.lgs.currentUser.posts;let i=index" [attr.data-index]="i" class="postDetails"
+  <div class="userprofilePostBox">
+    <div class="userPostBox userPostCreated"><label class="postCreated">posts created</label>
+      <div class="userCreatedPosts" *mobxAutorun>
+        <mem-post-list
+          *ngFor="let post of this.root.lgs.currentUser.posts;let index=index" [attr.data-index]="index"
+          class="postDetails"
+          [post]="post"
+          [index]="index"
+          (click)="clickOn(post)"
+          [ngSwitch]="viewModePost"
         >
-          <div class="postDetailsContent postIndexDetails">{{i + 1}}</div>
-          <div class="postDetailsContent postContentDetails">{{post.content}}</div>
-          <div class="postDetailsContent postTimeDetails"><div class="dateDetails">{{post.date}}</div><div class="dateDetails">{{post.time}}</div></div>
-        </div>
+        </mem-post-list>
+      </div>
+    </div>
+
+
+    <div class="userPostBox userPostsLiked"><label class="postCreated">posts liked</label>
+      <div class="userCreatedPosts" *mobxAutorun>
+        <mem-post-list
+          *ngFor="let post of this.root.lgs.currentUser.postsLiked;let index=index" [attr.data-index]="index"
+          class="postDetails"
+          [post]="post"
+          [index]="index"
+          (click)="clickOn(post)"
+          [ngSwitch]="viewModePost"
+        >
+
+        </mem-post-list>
 
 
       </div>
     </div>
-    <div class="userLikedPostBox">posts liked by user
-      <div class="userLikedPosts"></div>
-    </div>
+
 
   </div>
+  <div [ngSwitch]="viewModePost" class="newDiv" *mobxAutorun>
+    <div *ngSwitchCase="'add'"
+
+         class="postUserPreview">
+
+
+      <div class="postContainer" *mobxAutorun>
+        <div class="postBox">
+
+          <div class="postDateTimeDelete">
+            <div class="dateDeleteContainer">
+              <div class="postDate">
+                created {{post.date}} at {{post.time}}
+              </div>
+              <ng-container>
+                <div class="deletePostButton button"
+                     (click)="clickOof()">
+                  <img class="deleteIcon" src="../../../assets/svg/delete.svg" alt="" width="27px">
+                </div>
+              </ng-container>
+            </div>
+
+          </div>
+
+          <div class="postBoxUserAndContent">
+            <div class="postUserInfo">
+              <div class="postUserAvatar" *mobxAutorun>
+                <img class="avatar" src="{{root.fs.createdBy(post.createdByUserId).avatar}}" width="70px">
+
+              </div>
+
+              <div class="postUserName">
+                {{root.fs.createdBy(post.createdByUserId).name}}
+              </div>
+            </div>
+
+
+            <div class="postContent">
+              {{post.content}}
+            </div>
+
+          </div>
+          <div class="likeWrapper">
+            <div class="likeBox">
+              <div class="likePostButton button" (click)="root.lks.generateLike(post._id,currentUser);clickOof()">
+                <img class="deleteIcon" src="../../../assets/svg/like.svg" alt="" width="27px">
+              </div>
+              <div class="counter" (click)="viewModeLikes='add'" *mobxAutorun>{{post.likes.length}}</div>
+              <div [ngSwitch]="viewModeLikes" class="newDiv">
+                <div *ngSwitchCase="'add'"
+                     (click)="viewModeLikes='empty'"
+                     class="likesAvatarBox">
+                  <div class="likes" *ngFor="let like of post.likes">
+                    <img class="likeAvatarIcon" src="{{this.root.us.getUserAvatar(like.userId)}}" alt="">
+                    {{this.root.us.getUserName(like.userId)}}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="likeBox">
+              <div class="likePostButton button" (click)="root.lks.generateUnLike(post._id,currentUser);clickOof()">
+                <img class="deleteIcon " src="../../../assets/svg/unLike.svg" alt="" width="27px">
+              </div>
+              <div class="counter" (click)="viewModeDislikes='add'" *mobxAutorun>{{post.disLikes.length}}</div>
+              <div [ngSwitch]="viewModeDislikes" class="newDiv">
+                <div *ngSwitchCase="'add'"
+                     (click)="viewModeDislikes='empty'"
+                     class="likesAvatarBox">
+                  <div class="likes" *ngFor="let disLike of post.disLikes">
+                    <img class="likeAvatarIcon" src="{{this.root.us.getUserAvatar(disLike.userId)}}" alt="">
+                    {{this.root.us.getUserName(disLike.userId)}}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
 
 </div>
