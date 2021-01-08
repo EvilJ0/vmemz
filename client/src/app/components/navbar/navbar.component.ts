@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Router}                                  from '@angular/router';
 import {RootStore} from '../../stores/root.store';
 
 @Component({
@@ -8,7 +8,7 @@ import {RootStore} from '../../stores/root.store';
              styleUrls: ['./navbar.component.css']
            })
 export class NavbarComponent implements OnInit {
-
+  @Output() animateRight = new EventEmitter();
   constructor(
     private router:Router,
     public root:RootStore
@@ -28,6 +28,20 @@ export class NavbarComponent implements OnInit {
   }  routeToLogin(){
     this.router.navigateByUrl('login')
         .then(r=>r);
+  }
+  async fadeRightAnimate(){
+    this.animateRight.emit(`startAnimate`);
+  }
+  fadeRightAnimateToLogin(){
+    this.fadeRightAnimate().then(()=>this.routeToLogin())
+  }
+
+  fadeRightAnimateToProfile(){
+    this.fadeRightAnimate().then(()=>this.routeToProfile())
+  }
+
+  fadeRightAnimateToFeed(){
+    this.fadeRightAnimate().then(()=>this.routeToFeed())
   }
 
 }

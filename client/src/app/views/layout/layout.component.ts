@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {RootStore}           from "../../stores/root.store";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {RootStore}                                      from "../../stores/root.store";
 import {FeedStore}           from "../../stores/entities/feed.store";
 import {UserStore}           from "../../stores/entities/user.store";
 import {LoginStore}          from "../../stores/entities/login.store";
@@ -16,7 +16,7 @@ import {SocketAdapter}       from "../../adapters/socket.adapter";
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
-
+  @Input() animateRight = new EventEmitter();
 
   constructor(
     public root:RootStore,
@@ -48,7 +48,6 @@ export class LayoutComponent implements OnInit {
     }
     //
     // this.root.socketAdapter.listen(`getPosts`).subscribe((data)=>{console.log(data)})
-
   }
 
 

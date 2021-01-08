@@ -1,11 +1,14 @@
-import {BaseController, IBaseController} from './base.controller';
-import {ILike}                           from '../../Shared/types/Entities/iLike';
-import {IPost}                           from '../../Shared/types/Entities/iPost';
-import {IUser}                           from '../../Shared/types/Entities/iUser';
-import {Collection, Db, MongoClient}     from 'mongodb';
-import {config}                          from '../config/config';
+import {BaseController, IBaseController}           from './base.controller';
+import {ILike}                                     from '../../Shared/types/Entities/iLike';
+import {IPost}                                     from '../../Shared/types/Entities/iPost';
+import {IUser}                                     from '../../Shared/types/Entities/iUser';
+import {Collection, Db, GridFSBucket, MongoClient} from 'mongodb';
+import {config}                                    from '../config/config';
+import * as Grid                                   from 'gridfs-stream'
 
-const ObjectID = require('mongodb').ObjectID;
+const
+    mongo    = require('mongodb'),
+    ObjectID = mongo.ObjectID;
 
 
 export interface IDBController extends IBaseController {
@@ -48,6 +51,11 @@ export interface IDBController extends IBaseController {
     getUserLikedPosts(user_id: string): Promise<IPost[]>;
 
 
+    updateUserAvatar(id: string, avatar: string): Promise<any>;
+
+    getFile(filename): Promise<any>;
+
+    getLastUpload(): Promise<unknown>;
 }
 
 export class MongoController extends BaseController implements IDBController {
@@ -56,6 +64,8 @@ export class MongoController extends BaseController implements IDBController {
     likesCollection: Collection;
     postsCollection: Collection;
     usersCollection: Collection;
+    gfs;
+    gridFSBucket;
 
     constructor() {
         super();
@@ -76,9 +86,14 @@ export class MongoController extends BaseController implements IDBController {
                 console.log(`Connected successfully to Mongodb`);
                 This.db = This.client.db(config.dbName);
 
+                This.gfs = Grid(This.db, mongo);
+                This.gridFSBucket = new GridFSBucket(This.db, {bucketName: 'uploads'});
+
                 This.likesCollection = This.db.collection('likes');
                 This.postsCollection = This.db.collection('posts');
                 This.usersCollection = This.db.collection('users');
+
+                This.gfs.collection('uploads');
 
                 resolve();
 
@@ -88,6 +103,7 @@ export class MongoController extends BaseController implements IDBController {
 
     }
 
+    //<editor-fold desc="user">
     async getUsers(): Promise<IUser[]> {
 
         const users             = await this.usersCollection.find().toArray(),
@@ -122,6 +138,16 @@ export class MongoController extends BaseController implements IDBController {
                       })
                   );
         return users
+    }
+
+    verifyUser(userName: string): boolean {
+        const
+            userFound = this.usersCollection.findOne({name: userName});
+        if (userFound) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     async getUser(user_id: string): Promise<IUser | any> {
@@ -164,16 +190,6 @@ export class MongoController extends BaseController implements IDBController {
 
     }
 
-    verifyUser(userName: string): boolean {
-        const
-            userFound = this.usersCollection.findOne({name: userName});
-        if (userFound) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     async saveUser(user: IUser): Promise<any> {
         try {
             return this.usersCollection.insertOne(user);
@@ -186,7 +202,6 @@ export class MongoController extends BaseController implements IDBController {
         // console.log(`searching likes of user_id: ${user_id}`);
         return this.likesCollection.find({userId: user_id}).toArray();
     }
-
 
     async getUserPosts(user_id: string): Promise<IPost[]> {
         // console.log(`get user posts work`);
@@ -205,8 +220,17 @@ export class MongoController extends BaseController implements IDBController {
         return postRes
     }
 
+    async updateUserAvatar(id: string, avatar: string): Promise<any> {
+        const _id = new ObjectID(id);
+        return await this.usersCollection.updateOne(
+            {_id: _id}, {$set: {avatar: avatar}});
+
+    }
+
+    //</editor-fold>
 
 
+    //<editor-fold desc="post">
     async getPosts(): Promise<IPost[]> {
         const
             posts            = await this.postsCollection.find().toArray(),
@@ -267,8 +291,10 @@ export class MongoController extends BaseController implements IDBController {
         console.log(`delete post in mongo work in postId: ${post_id}`)
         return await this.postsCollection.deleteOne({_id: ObjectID(post_id)});
     }
+    //</editor-fold>
 
 
+    //<editor-fold desc="like">
     async saveLike(like: ILike): Promise<any> {
         console.log(`mongo save like work`);
         try {
@@ -292,6 +318,32 @@ export class MongoController extends BaseController implements IDBController {
         console.log(`deleting like: ${like_id}`)
         return this.likesCollection.deleteMany({_id: ObjectID(like_id)});
     }
+    //</editor-fold>
+
+    //<editor-fold desc="upload">
+    async getFile(filename): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.gfs.files.findOne({filename: filename}, (err, file) => {
+                if (file) {
+                    const readStream = this.gridFSBucket.openDownloadStream(file._id);
+                    resolve(readStream);
+                } else {
+                    reject();
+                }
+            });
+        });
+    }
+
+    async getLastUpload() {
+        return new Promise((resolve, reject) => {
+            this.gfs.files.find({}).toArray((err, files) => {
+                let lastFile = files.reduce((a, b) => (a.uploadDate > b.uploadDate ? a : b));
+                const readStream = this.gridFSBucket.openDownloadStream(lastFile._id);
+                resolve(readStream);
+            });
+        });
+    }
+    //</editor-fold>
 
     close(): Promise<any> {
         return this.client.close();

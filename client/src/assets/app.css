@@ -28,9 +28,9 @@ body, html, mem-layout {
   padding: 0;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(black, #010b7c 50%);
+  background: linear-gradient(black, #5c017c 50%);
   box-sizing: border-box;
-  box-shadow: inset;
+  box-shadow: inset 0px 0px 343px 0px black;
 }
 
 
@@ -97,11 +97,13 @@ button.navBarButton {
   margin-right: 10px;
   height: 75%;
   cursor: pointer;
-  background: gray;
+  color: #d5c6c6;
+  background: #77179b;
+  box-shadow: inset 0px 0px 19px 0px #000000ad;
 }
 
 mem-post-box {
-  background: #292929;
+  background: #621380;
   display: flex;
   flex-direction: column;
   width: 67%;
@@ -110,7 +112,7 @@ mem-post-box {
   border-radius: 27px;
   align-items: center;
   /* margin: 35px; */
-  box-shadow: 0px 6px 9px 0px #0202027d, inset 0px 0px 106px 0px #535252;
+  box-shadow: 0px 6px 9px 0px #0202027d, inset 0px 0px 33px 0px #535252;
 }
 
 app-post-box {
@@ -286,13 +288,14 @@ img.deleteIcon {
 }
 
 .likePostButton {
-  background: #6b6b6b;
+  background: #a220d1;
   width: 40px;
   justify-content: center;
   display: flex;
   height: 40px;
   border-radius: 23px;
   cursor: pointer;
+  box-shadow:  inset 0px 0px 19px 0px #000000ad;
 }
 
 img.deleteIcon {
@@ -584,6 +587,7 @@ div {}
     animation-name: example5;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+    box-shadow: 0px 3px 18px 0px #00000066, inset 0px 0px 45px 0px #0000007a;
 }
 
 textarea.inputArea {
@@ -595,7 +599,7 @@ textarea.inputArea {
 .currentUser {
     margin: 23px;
     font-size: 1.5em;
-    color: grey;
+    color: #a20bdc;
     cursor: default;
 }
 
@@ -629,7 +633,7 @@ textarea.inputArea {
     cursor: pointer;
     position: relative;
     animation-name: example2;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
 
@@ -704,7 +708,7 @@ mem-post {
 
 .button:hover {
     transform: scale(1.1);
-    box-shadow: 0px 4px 7px 0px black;
+    box-shadow: 0px 4px 7px 0px black, inset 0px 0px 19px 0px #000000ad;
 }
 
 .button {
@@ -712,12 +716,13 @@ mem-post {
     border-style: none;
 }
 
-.button:focus {outline: none;background: #fefefebf;}
+.button:focus {outline: none;background: #4a1c5b;box-shadow: inset 0px 0px 19px 0px #000000ad;}
 
 .button:active {
     border-style: none;
     transform: scale(1.0);
     box-shadow: 0px 0px 0px 0px black;
+    box-shadow: inset 0px 0px 19px 0px #000000ad;
 }
 
 .postDetails:hover {

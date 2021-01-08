@@ -8,6 +8,7 @@ import {createPostHandler, deletePostHandler, getPostHandler, getPostsHandler} f
 import {IUserController}                                                       from './user.controller';
 import {IPostController}                                                       from './post.controller';
 import {IAuthController}                                                       from './auth.controller';
+import {IUploadController}                                                     from "./upload.controller";
 
 export interface IMainController extends IBaseController {
   userController: IUserController
@@ -16,6 +17,7 @@ export interface IMainController extends IBaseController {
   httpController: IHttpController
   mongoController: IDBController
   authController: IAuthController
+  uploadController: IUploadController
 }
 
 export class MainController extends BaseController implements IMainController {
@@ -26,7 +28,8 @@ export class MainController extends BaseController implements IMainController {
     public postController: IPostController,
     public httpController: IHttpController,
     public mongoController: IDBController,
-    public authController: IAuthController
+    public authController: IAuthController,
+    public uploadController: IUploadController
   ) {
     super();
 
@@ -36,6 +39,7 @@ export class MainController extends BaseController implements IMainController {
     this.httpController.main = this;
     this.mongoController.main = this;
     this.authController.main = this;
+    this.uploadController.main= this;
   }
 
   async init(): Promise<void> {

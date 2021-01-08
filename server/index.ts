@@ -1,10 +1,11 @@
-import {LikeController} from './controllers/like.controller';
-import {PostController} from './controllers/post.controller';
-import {UserController} from './controllers/user.controller';
-import {HttpController} from './controllers/http.controller';
-import {MongoController} from './controllers/mongo.controller';
-import {MainController} from './controllers/main.controller';
-import {AuthController} from './controllers/auth.controller';
+import {LikeController}   from './controllers/like.controller';
+import {PostController}   from './controllers/post.controller';
+import {UserController}   from './controllers/user.controller';
+import {HttpController}   from './controllers/http.controller';
+import {MongoController}  from './controllers/mongo.controller';
+import {MainController}   from './controllers/main.controller';
+import {AuthController}   from './controllers/auth.controller';
+import {UploadController} from "./controllers/upload.controller";
 
 (async () => {
     const
@@ -12,6 +13,7 @@ import {AuthController} from './controllers/auth.controller';
         postController = new PostController(),
         userController = new UserController(),
         httpController = new HttpController(),
+        uploadController = new UploadController(),
         mongoController = new MongoController(),
         authController = new AuthController(),
         mainController = new MainController(
@@ -20,7 +22,8 @@ import {AuthController} from './controllers/auth.controller';
             postController,
             httpController,
             mongoController,
-            authController
+            authController,
+            uploadController
 
         );
 
